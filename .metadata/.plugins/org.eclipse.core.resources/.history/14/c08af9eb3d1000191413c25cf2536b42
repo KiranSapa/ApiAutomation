@@ -1,0 +1,30 @@
+package entities;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class SinclairAvailsBuilder {
+
+  public static enum createSinclairAvailsDataBuilderEnum {
+    markets, stations, campaignName, flightDates, hiatusDates, agency, advertiser, accountExce, dayParts, spotLength, dueDate, cPE, description, Brand, calender, demo, product, client, agency_product, estimate, PlacementPriority, calendar, BusinessClass1, BusinessClass2, BusinessClass3, team
+  }
+
+  Map<createSinclairAvailsDataBuilderEnum, String> map = new HashMap<createSinclairAvailsDataBuilderEnum, String>();
+
+  public SinclairAvailsBuilder setSinclairAvailsDataField(
+      createSinclairAvailsDataBuilderEnum createAvailsDataBuilderEnum, String value) throws InterruptedException {
+
+    map.put(createAvailsDataBuilderEnum, value);
+    return this;
+  }
+
+  public String getSinclairAvailsDataField(createSinclairAvailsDataBuilderEnum key) {
+    return map.get(key);
+  }
+
+  public Set<createSinclairAvailsDataBuilderEnum> getKeySet() {
+    return this.map.keySet();
+  }
+
+}

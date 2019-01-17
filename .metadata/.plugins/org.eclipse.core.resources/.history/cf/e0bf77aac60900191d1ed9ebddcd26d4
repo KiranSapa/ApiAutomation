@@ -1,0 +1,253 @@
+package camsreveresefeed;
+
+
+
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
+
+public class CamsReverseFeedPaytmMoney {
+	
+	
+	
+		
+	
+	public WebDriver driver;
+	public DownloadWBR2 downloadDriver;
+
+
+
+	
+
+	
+	@BeforeMethod
+
+	public  void setUp() throws IOException {
+		String chromedriverPath=new File(new File(".").getAbsolutePath()).getCanonicalPath()+"/src/test/resources/driver/chromedriver";
+		
+		System.setProperty("webdriver.chrome.driver",chromedriverPath);
+		driver = new ChromeDriver();
+		downloadDriver = new DownloadWBR2(driver);
+	}
+	
+	
+	
+	
+
+
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void DSPAlternativeInvestmentFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("39 \\ DSP Alternative Investment Fund");
+}
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadAdityaBirlaSunLifeMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("B \\ Aditya Birla Sun Life Mutual Fund");
+}
+
+
+
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadHDFCMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("H \\ HDFC Mutual Fund");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadICICIPrudentialMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("P \\ ICICI Prudential Mutual Fund");
+
+}
+
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadSBIMutualFund() throws InterruptedException {
+	downloadDriver.downloadWBR2("L \\ SBI Mutual Fund");
+
+}
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadBirlaGoldAndPreciousMetals() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("BG \\ Birla Gold and Precious Metals");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadHSBCMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("O \\ HSBC Mutual Fund");
+
+}
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadIDFCMutualFund() throws InterruptedException {
+	downloadDriver.downloadWBR2("G \\ IDFC Mutual Fund");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadIIFLMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("IF \\ IIFL Mutual Fund");
+
+}
+
+
+
+
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadKotakMahindraMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("K \\ Kotak Mahindra Mutual Fund");
+
+}
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadLAndTCamsReverseFeedPaytmMoney() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("F \\ L&T Mutual Fund");
+
+}
+
+
+@Test
+public void zownloadKarvyFeed() throws InterruptedException {
+	downloadDriver.downloadKarvyFeed();
+}
+
+
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadMahindraMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("MM \\ Mahindra Mutual Fund");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadPPFASMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("PP \\ PPFAS Mutual Fund");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadRelianceMoneyPreciousMetalsMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("RM \\ Stock Holding Corporation of India Ltd (MGP)");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadShiramMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("SH \\ Shriram Mutual Fund");
+
+}
+
+
+
+@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+public void downloadTataMutualFund() throws InterruptedException {
+
+	downloadDriver.downloadWBR2("T \\ TATA Mutual Fund");
+
+}
+
+
+	@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+	public void downloadUnionMutualFund() throws InterruptedException {
+
+		downloadDriver.downloadWBR2("UK \\ Union Mutual Fund");
+
+	}
+
+
+	@Test(retryAnalyzer = camsreveresefeed.RetryAnalyzer.class)
+
+	public void downloadDSPMutualFund() throws InterruptedException {
+
+		downloadDriver.downloadWBR2("D \\ DSP Mutual Fund");
+
+	}
+
+
+
+
+
+	@AfterMethod
+	public  void tearDown() {
+
+	driver.quit();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+}
+
+

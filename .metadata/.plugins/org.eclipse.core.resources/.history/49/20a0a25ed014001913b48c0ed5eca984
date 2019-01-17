@@ -1,0 +1,48 @@
+package paytm.paytmmoney.paytmmoneyapi;
+
+import java.text.ParseException;
+
+import org.testng.annotations.Test;
+
+import io.restassured.response.Response;
+import paytm.paytmmoney.ApiUtils.curdUtils;
+import paytmmoney.common.Endpoints;
+import paytmmoney.common.RequestSpecificationBuilder;
+
+public class SampleApiTest {
+	RequestSpecificationBuilder rsp=new RequestSpecificationBuilder();
+	
+	@Test
+	public void test1() {
+		rsp.setPathParameters("UserId", 11564439);
+		rsp.setQueryParms("pageSize", 100);
+		Response response=curdUtils.getinstance().jsonClientGet(Endpoints.mfTransection,rsp);
+		response.then().statusCode(200);
+		
+			
+	}
+	
+	@Test
+	public void test2() throws ParseException {
+		rsp.setPathParameters("UserId", 400385)
+		.setQueryParms("pageSize", 3660).setQueryParms("fromDate","01/07/2019").setQueryParms("toDate", "03/31/2019");
+		System.out.println(rsp.getQueryParms());
+		Response response=curdUtils.getinstance().jsonClientGet(Endpoints.mfTransection_History,rsp);
+		response.then().statusCode(200);
+		
+		response.then().log().status();
+		curdUtils.getResponseBody();
+		
+	}
+	
+	@Test
+	public void test3() {
+		Response response=curdUtils.getinstance().jsonClientGet(Endpoints.mfTransection);
+		response.then().statusCode(200);
+		
+		response.then().log().status();
+	}
+	
+	
+
+}

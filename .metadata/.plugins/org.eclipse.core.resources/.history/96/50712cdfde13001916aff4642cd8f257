@@ -1,0 +1,53 @@
+package paytm.paytmmoney.paytmmoneyapi;
+
+import org.testng.annotations.Test;
+
+import io.restassured.http.Header;
+import io.restassured.response.Response;
+import paytm.paytmmoney.ApiUtils.curdUtils;
+import paytmmoney.common.Endpoints;
+import paytmmoney.common.RequestSpecificationBuilder;
+
+public class SampleApiTest {
+	
+	
+	@Test
+	public void test1() {
+		RequestSpecificationBuilder rsp=new RequestSpecificationBuilder();
+		rsp.setPathParameters("UserId", 2);
+		rsp.setQueryParms("userval", "val");
+		Header header1=new Header("auth", "authval");
+		rsp.setHeader(header1);
+		Response response=curdUtils.getinstance().jsonClientGet(Endpoints.mfTransection,rsp);
+		response.then().statusCode(200);
+		
+			
+	}
+	
+	@Test
+	public void test2() {
+		
+		Response response=curdUtils.getinstance().jsonClientGet(Endpoints.mfTransection);
+		response.then().statusCode(200);
+		
+		response.then().log().status();
+		
+		
+		
+	}
+	
+	@Test
+	public void test3() {
+		
+		Response response=curdUtils.getinstance().jsonClientGet(Endpoints.mfTransection);
+		response.then().statusCode(200);
+		
+		response.then().log().status();
+		
+		
+		
+	}
+	
+	
+
+}

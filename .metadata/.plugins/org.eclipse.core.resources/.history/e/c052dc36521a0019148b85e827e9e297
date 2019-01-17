@@ -1,0 +1,128 @@
+package paytm.paytmmoney.ApiUtils;
+
+import static io.restassured.RestAssured.basic;
+import static io.restassured.RestAssured.given;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import paytmmoney.common.RequestSpecificationBuilder;
+import paytmmoney.common.RequestSpecificationBuilder.Specifications;
+
+
+public class curdUtils extends BaseUtils{
+	public static curdUtils curd;
+	private static int responsecode;
+	private static String responseBody;
+	public static Response response; 
+	public BaseUtils baseUtil;
+	RequestSpecification requestSpecification;
+	RequestSpecBuilder specBuilder;
+	private curdUtils() {
+	}
+	
+	public static curdUtils getinstance() {
+		if(curd==null) {
+			curd= new curdUtils();
+			
+		}
+		return curd;
+		
+	}
+	
+	 public void configure() {
+		 log("*****CONFIGURING*****");
+		 
+		  RestAssured.baseURI=config.getProperty("baseUrl");
+		  RestAssured.authentication=basic("", "");
+		  
+	  }
+	 
+	 
+	 public RequestSpecification getRequestSpecification(RequestSpecificationBuilder parameters) {
+		 requestSpecification=given().contentType(ContentType.JSON)
+				 .pathParams(parameters.getPathParams()).queryParams(parameters.getQueryParms());
+		 
+		 return requestSpecification;
+		
+		}
+
+	//get Opertion
+	
+//	public Response postRequest(String uri,String authval,String json) {
+//		RequestSpecification httpRequest = RestAssured.given();
+//	    httpRequest.header("Content-Type", "application/json");
+//	    httpRequest.body(json);
+//	    httpRequest.header("Authorization", authval);
+//		Response response=httpRequest.post();
+//		return response;
+//	}
+	
+	public static int getResponsecode() {
+		return responsecode;
+	}
+	
+	public static String getResponseBody() {
+		return responseBody;
+	}
+	
+	public static Response getResponse() {
+		return response;
+	}
+	
+	
+	public Response jsonClientGet(String url,RequestSpecificationBuilder builder) {
+	
+	    final Response response = 
+	    			given().spec(getRequestSpecification(builder)).get(url);
+	     try {
+	    	responsecode=response.getStatusCode();
+	      if (response.statusCode() != 200) {
+	        log("Failed : RestAssured error code : " + response.statusCode());
+	      }
+	    //  log(response.prettyPrint());
+	     responseBody= response.getBody().asString();
+	    } catch (final Exception e) {
+	      // TODO Auto-generated catch block
+	      throw new RuntimeException("Failed : HTTP error code : " + response.statusCode());
+	    }
+	    return response;
+	  }
+	
+	public Response jsonClientGet(String url) {
+		
+		configure();
+	    final Response response = 
+	    			given().get(url);
+	  
+	  //  httpRequest.header("Authorization", authVal);
+	    
+	    try {
+	    	responsecode=response.getStatusCode();
+	      if (response.statusCode() != 200) {
+	        log("Failed : RestAssured error code : " + response.statusCode());
+	      }
+	      log(response.prettyPrint());
+	     responseBody= response.getBody().asString();
+	    } catch (final Exception e) {
+	      // TODO Auto-generated catch block
+	      throw new RuntimeException("Failed : HTTP error code : " + response.statusCode());
+	    }
+	    return response;
+	  }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
